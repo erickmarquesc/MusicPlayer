@@ -33,16 +33,6 @@ export const PlayerContainer = styled.div`
     gap: 28px;
   }
   
-  .controls {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 28px;
-  }
-  
-  .horizontal .controls {
-    padding-inline: 58px;
-  }
-  
   .track {
     margin-top: 28px;
     position: relative;
@@ -102,7 +92,7 @@ export const PlayerContainer = styled.div`
 `;
 
 interface PlayerSectionProps {
-  variant?: 'playerOne' | 'playerTwo' | 'playerThree' | 'default';
+  variant: 'playerOne' | 'playerTwo' | 'playerThree' | 'default';
 };
 export const PlayerSection = styled.div<PlayerSectionProps>`
   background-color: #2A2141;
@@ -142,4 +132,20 @@ export const PlayerSection = styled.div<PlayerSectionProps>`
       grid-area: B;
       height: fit-content;
   `}
+`;
+
+interface WrapperContainerProps {
+  varient: 'primary' | 'secundary' ;
+};
+ 
+export const WrapperContainer = styled.div<WrapperContainerProps>`
+  ${(props) => props.varient === 'primary' ? css`
+    width: 190px;
+`: props.varient === 'secundary' && css``}
+`;
+
+export const WrapperSection = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 28px;
 `;

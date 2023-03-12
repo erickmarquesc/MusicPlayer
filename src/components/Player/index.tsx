@@ -1,50 +1,47 @@
-import { Controls } from "../Controls";
-import { MusicInfo } from "../MusicInfo";
-import { PlayerContainer, PlayerSection } from "./styles";
+import { PlayerContainer, PlayerSection, WrapperContainer, WrapperSection } from "./styles";
 import imgMusic from "../../assets/imgMusic.svg";
-export function Player() {
-  
+import { MusicInfo } from "../MusicInfo";
+import { Controls } from "../Controls";
+
+export function Player() {  
   return (
     <PlayerContainer>
       <PlayerSection variant="playerOne">
-        <div className="wrapper">
+        <WrapperContainer varient="primary">
+
           <img src={imgMusic} alt="Capa do cd Rockeseat - Single - Acorda Devinho" />
-
           <MusicInfo variant="primary" />
+          
+          <Controls trackTime={true} variant="secundary"/>
 
-          <Controls trackTime={true} />
-
-        </div>
+        </WrapperContainer>
       </PlayerSection>
 
-      <PlayerSection variant="playerTwo" className="horizontal">
-        <div className="wrapper">
+      <PlayerSection variant="playerTwo">
+        <WrapperContainer varient="secundary" >
 
-          <div className="info-wrapper">
+          <WrapperSection>
+            <img src={imgMusic} alt="Capa do cd Rockeseat - Single - Acorda Devinho" />
+            <MusicInfo variant="secundary" />
+          </WrapperSection>
 
+          <Controls trackTime={true} variant="primary"/>
+
+        </WrapperContainer>
+      </PlayerSection>
+
+      <PlayerSection variant="playerThree">
+        <WrapperContainer varient="secundary" >
+
+          <WrapperSection>
             <img src={imgMusic} alt="Capa do cd Rockeseat - Single - Acorda Devinho" />
             <MusicInfo variant="secundary" />
 
-          </div>
+          </WrapperSection>
 
-          <Controls trackTime={true} />
+          <Controls trackTime={false} variant="primary" />
 
-        </div>
-      </PlayerSection>
-
-      <PlayerSection variant="playerThree" className="horizontal">
-        <div className="wrapper">
-
-          <div className="info-wrapper">
-
-            <img src={imgMusic} alt="Capa do cd Rockeseat - Single - Acorda Devinho" />
-            <MusicInfo variant="secundary" />
-
-          </div>
-
-          <Controls trackTime={false} />
-
-        </div>
+        </WrapperContainer>
       </PlayerSection>
     </PlayerContainer>
   );
