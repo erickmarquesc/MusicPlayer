@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const PlayerContainer = styled.div`
 
@@ -12,41 +12,6 @@ export const PlayerContainer = styled.div`
 
   place-content: center;
   height: 100vh;
-  
-  
-  /* player-1 */
-  #player-1 {
-    grid-area: A;
-    padding: 50px 38px;
-  }
-  
-  #player-1 .wrapper {
-    width: 190px;
-  }
-  
-  #player-1 img {
-    width: 190px;
-    height: 190px;
-    object-fit: cover;
-  
-    border-radius: 6px;
-  }
-  
-  #player-1 .info {
-    margin-top: 28px;
-  }
-  
-  /* player-2 */
-  #player-2 {
-    grid-area: B;
-    height: fit-content;
-  }
-  
-  /* player-3 */
-  #player-3 {
-    grid-area: C;
-  }
-  
   
   .player {
     background-color: #2A2141;
@@ -66,20 +31,6 @@ export const PlayerContainer = styled.div`
     display: flex;
     align-items: center;
     gap: 28px;
-  }
-  
-  .info  {
-    color: #E1E1E6;
-  }
-  
-  .info h1 {
-    font-size: 24px;
-    margin-bottom: 9.6px;
-  }
-  
-  .info p {
-    opacity: 0.67;
-    font-size: 19px;
   }
   
   .controls {
@@ -148,4 +99,47 @@ export const PlayerContainer = styled.div`
     }
   
   }
+`;
+
+interface PlayerSectionProps {
+  variant?: 'playerOne' | 'playerTwo' | 'playerThree' | 'default';
+};
+export const PlayerSection = styled.div<PlayerSectionProps>`
+  background-color: #2A2141;
+  padding: 28px;
+  border-radius: 10px;
+
+  img {
+    width: 84px;
+    height: 84px;
+    object-fit: cover;
+
+    border-radius: 6px;
+  }
+
+   ${(props) => props.variant === 'playerOne' ? css`
+    grid-area: A;
+    padding: 50px 38px;
+    .wrapper {
+      width: 190px;
+    }
+
+    img {
+      width: 190px;
+      height: 190px;
+      object-fit: cover;
+    
+      border-radius: 6px;
+    }
+  `: props.variant === 'playerTwo' && css`
+      grid-area: B;
+      height: fit-content;
+  `}
+
+  ${(props) => props.variant === 'playerThree' ? css`
+    grid-area: C;
+  `: props.variant === 'default' && css`
+      grid-area: B;
+      height: fit-content;
+  `}
 `;
